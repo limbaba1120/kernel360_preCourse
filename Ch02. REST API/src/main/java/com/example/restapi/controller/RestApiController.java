@@ -1,8 +1,10 @@
 package com.example.restapi.controller;
 
 import com.example.restapi.model.BookQueryParam;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController
 @RequestMapping("/api")
 public class RestApiController {
@@ -63,5 +65,14 @@ public class RestApiController {
             System.out.println("isTrue = " + isTrue);
         }
     }
+
+    @DeleteMapping(path = {
+            "/user/{userName}/delete",
+            "/user/{username}/del"})
+    public void delete(@PathVariable String userName) {
+        log.info("user-name : {}", userName);
+    }
+
+
 
 }
