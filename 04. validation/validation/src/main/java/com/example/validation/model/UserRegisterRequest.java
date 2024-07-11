@@ -10,6 +10,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Data
@@ -39,8 +40,11 @@ public class UserRegisterRequest {
     @PhoneNumber
     private String phoneNumber;
 
-    @YearMonth
-    private String registerAt;
+    @FutureOrPresent
+    private LocalDateTime registerAt;
+
+    @YearMonth(pattern = "yyyy-MM")
+    private String birthDayYearMonth;
 
     @AssertTrue(message = "name or nickName은 존재해야 합니다.")
     public boolean isNameCheck() {
