@@ -1,4 +1,4 @@
-package com.example.simpleboard.post.db;
+package com.example.simpleboard.post.model;
 
 import com.example.simpleboard.board.db.BoardEntity;
 import com.example.simpleboard.reply.db.ReplyEntity;
@@ -17,18 +17,12 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @ToString
-@Entity(name = "post")
 @JsonNaming(value = PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class PostEntity {
+public class PostDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JsonIgnore
-    @ToString.Exclude
-    private BoardEntity board;
+    private Long boardId;
 
     private String userName;
 
@@ -40,12 +34,9 @@ public class PostEntity {
 
     private String title;
 
-    @Column(columnDefinition = "TEXT")
     private String content;
 
     private LocalDateTime postedAt;
 
-    @Transient
-    private List<ReplyEntity> replyList = List.of();
 
 }
