@@ -1,5 +1,13 @@
-# kernel360_preCourse
-Kernel360 시작 전 사전 과제
+<div align="center">
+  <h1 style="font-size: 3em; color: #3498db; text-shadow: 2px 2px 4px #000000;">
+    🌟 Kernel360: Pre-Course Assignment 🌟
+  </h1>
+</div>
+
+
+
+
+
 
 ## 📒 과제 내용
 
@@ -14,7 +22,7 @@ Kernel360 시작 전 사전 과제
 
 ### 강의명 - 시그니처 백엔드 Path 초격차 패키지 Online.
 
-- notion:
+- **Notion 링크**: [여기를 클릭하세요](https://maddening-ferry-5e7.notion.site/18d0cbdeea0642c59383cba3cf4f4ed8?pvs=4) - 다양한 기능과 내용이 정리
  
 | Ch   | 제목                    | 내용                                                                                                                                                             |
 |------|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -29,7 +37,19 @@ Kernel360 시작 전 사전 과제
 | Ch 08| 간단한 게시판 프로젝트  | - MySQL 테이블 설계 <br> - 게시글 조회, 삭제 <br> - JPA 연관관계 설정 <br> - Paging                                                                                |
 
 
+## 사용한 개발 도구
 
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="https://github.com/user-attachments/assets/89f92cdd-d9ae-4684-8df0-40f9741ee47b" alt="Spring Boot" width="100"><br>Spring Boot
+      </td>
+      <td align="center"><img src="https://resources.jetbrains.com/storage/products/company/brand/logos/IntelliJ_IDEA_icon.png" alt="IntelliJ IDEA" width="100"><br>IntelliJ IDEA</td>
+      <td align="center"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" width="100"><br>GitHub</td>
+    </tr>
+  </table>
+</div>
 
 ## 참고 자료
 
