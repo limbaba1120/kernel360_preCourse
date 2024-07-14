@@ -1,6 +1,8 @@
 package com.example.todoserver.persist.entity;
 
 import com.example.todoserver.constants.TaskStatus;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -21,6 +23,7 @@ import java.time.LocalDateTime;
 @Entity(name = "TASK")
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonNaming(value = PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class TaskEntity {
 
     @Id
@@ -34,7 +37,7 @@ public class TaskEntity {
     @Enumerated(value = EnumType.STRING)
     private TaskStatus status;
 
-    private Timestamp dueDate;
+    private Date dueDate;
 
     @CreationTimestamp
     @Column(insertable = false, updatable = false)

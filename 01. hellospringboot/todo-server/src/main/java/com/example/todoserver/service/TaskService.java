@@ -10,7 +10,11 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -19,34 +23,68 @@ public class TaskService {
 
     private final TaskRepository taskRepository;
 
-    public Task add(String title, String description, LocalDateTime dueDate) {
-        // LocalDateTime을 Timestamp로 변환
-        Timestamp dueDateTimestamp = dueDate != null ? Timestamp.valueOf(dueDate) : null;
+    public Task add(String title, String description, LocalDate dueDate) {
 
-        // TaskEntity 생성
         var e = TaskEntity.builder()
                 .title(title)
                 .description(description)
-                .dueDate(dueDateTimestamp)
+                .dueDate(Date.valueOf(dueDate))
                 .status(TaskStatus.TODO)
                 .build();
 
-        // 저장
         var saved = taskRepository.save(e);
 
-        // Entity를 DTO로 변환
         return entityToObject(saved);
     }
 
+    public List<Task> getAll() {
+        // entity 객체를 할 일 TASK 객체로 변환 -> 리스트 형태로 반환
+        return taskRepository.findAll().stream()
+                .map(this::entityToObject)
+                .collect(Collectors.toList());
+    }
+
+    public List<Task> getByDueDate(String dueDateStr) {
+        Date dueDate = Date.valueOf(dueDateStr);
+        return taskRepository.findAllByDueDate(dueDate).stream()
+                .map(this::entityToObject)
+                .collect(Collectors.toList());
+    }
+
+    public List<Task> getByStatus(TaskStatus status) {
+        return taskRepository.findAllByStatus(status).stream()
+                .map(this::entityToObject)
+                .collect(Collectors.toList());
+    }
+
+    public Task getOne(Long id) {
+        var entity = getById(id);
+        return entityToObject(entity);
+    }
+
+    private TaskEntity getById(Long id) {
+        return taskRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException(String.format("not exists task id [%d]", id)));
+    }
+
+
     private Task entityToObject(TaskEntity entity) {
+        LocalDateTime createdAt = Optional.ofNullable(entity.getCreatedAt())
+                .map(Timestamp::toLocalDateTime)
+                .orElse(null);
+
+        LocalDateTime updatedAt = Optional.ofNullable(entity.getUpdatedAt())
+                .map(Timestamp::toLocalDateTime)
+                .orElse(null);
+
         return Task.builder()
                 .id(entity.getId())
                 .title(entity.getTitle())
                 .description(entity.getDescription())
                 .status(entity.getStatus())
-                .dueDate(entity.getDueDate() != null ? entity.getDueDate().toLocalDateTime().toString() : null)
-                .createdAt(entity.getCreatedAt().toLocalDateTime())
-                .updatedAt(entity.getUpdatedAt().toLocalDateTime())
+                .dueDate(String.valueOf(entity.getDueDate()))
+                .createdAt(createdAt)
+                .updatedAt(updatedAt)
                 .build();
     }
 }

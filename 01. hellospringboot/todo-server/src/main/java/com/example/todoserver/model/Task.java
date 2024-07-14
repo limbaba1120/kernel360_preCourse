@@ -1,6 +1,8 @@
 package com.example.todoserver.model;
 
 import com.example.todoserver.constants.TaskStatus;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +14,7 @@ import java.time.LocalDateTime;
 @Setter
 @Builder
 @ToString
+@JsonNaming(value = PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class Task {
 
     private Long id;
