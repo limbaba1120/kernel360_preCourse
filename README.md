@@ -20,7 +20,7 @@
 
 ## 😀 진행
 
-### 강의명 - 시그니처 백엔드 Path 초격차 패키지 Online.
+### 강의명 - 시그니처 백엔드 Path 초격차 패키지 Online. && 부록1. 신입 개발자 Start Kit
 
 - **Notion 링크**: [여기를 클릭하세요](https://maddening-ferry-5e7.notion.site/18d0cbdeea0642c59383cba3cf4f4ed8?pvs=4) - 다양한 기능과 내용 정리
  
@@ -34,8 +34,11 @@
 | Ch 05| MySQL                   | - Docker 설치 방법 <br> - MySQL 설치 및 설정 방법 <br> - docker cli & wsl2 <br> - 기본 SQL 쿼리 사용법                                                                                  |
 | Ch 06| Spring Data JPA         | - JDBC, JPA, Hibernate, Spring Data Jpa 간단 소개 <br> - Spring Data Jpa 기초                                                                                      |
 | Ch 07| JPA로의 변환            | - 기존의 메모리 데이터베이스를 JPA를 사용하여 영구적인 데이터베이스로 변환 <br> - Spring Data JPA의 Repository 인터페이스를 사용하여 데이터베이스 작업을 수행 <br> - Query Method 방법 <br> - Native Query 방법                                                                        |
-| Ch 08| 간단한 게시판 프로젝트  | - MySQL 테이블 설계 <br> - 게시글 조회, 삭제 <br> - JPA 연관관계 설정 <br> - Paging                                                                                |
-
+| Ch 08| 간단한 게시판 프로젝트   | - MySQL 테이블 설계 <br> - 게시글 조회, 삭제 <br> - JPA 연관관계 설정 <br> - Paging                                                                                |
+| 부록.1 | 신입 개발자 Start Kit    |                                                                                                                                                      |
+| Ch 01  | 인텔리제이란 & Ch 02. 인텔리제이  |                                                                                                                                              |
+| Ch 03  | Git                    | - Git 설명 <br> - Git 명령어 정리 <br> - Git 브랜치 전략                                                                                |
+| Ch 04  | 프로젝트 실습           | - 프로젝트 개요, 테이블, API Endpoint 정리 <br> - 이슈 트래킹 <br> - todo API 조회, 수정, 삭제 <br> - 테스트 코드 작성                                             |
 
 ## 사용한 개발 도구
 
