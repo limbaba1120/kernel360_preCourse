@@ -6,6 +6,7 @@ import com.example.todoserver.model.Task;
 import com.example.todoserver.persist.entity.TaskEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
@@ -13,6 +14,7 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -65,6 +67,37 @@ public class TaskService {
     private TaskEntity getById(Long id) {
         return taskRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException(String.format("not exists task id [%d]", id)));
+    }
+
+    public Task update(Long id, String title, String description, LocalDate dueDate) {
+        TaskEntity exists = getById(id);
+
+        exists.setTitle(Strings.isEmpty(title) ? exists.getTitle() : title);
+        exists.setDescription(Strings.isEmpty(description) ? exists.getDescription() : description);
+        exists.setDueDate(Objects.isNull(dueDate) ? exists.getDueDate() : Date.valueOf(dueDate));
+
+        TaskEntity updated = taskRepository.save(exists);
+        return entityToObject(updated);
+    }
+
+    public Task updateStatus(Long id, TaskStatus status) {
+        TaskEntity entity = getById(id);
+
+        entity.setStatus(status);
+
+        TaskEntity saved = taskRepository.save(entity);
+
+        return entityToObject(saved);
+    }
+
+    public boolean delete(Long id) {
+        try {
+            taskRepository.deleteById(id);
+        } catch (Exception e) {
+            log.error("an error occurred while deleting [{}]", e.toString());
+            return false;
+        }
+        return true;
     }
 
 
